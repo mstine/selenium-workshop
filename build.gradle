@@ -1,0 +1,10 @@
+apply plugin:'java'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testCompile group:'junit', name:'junit', version:'4.8.2'
+	testCompile group:'org.seleniumhq.selenium.client-drivers', name:'selenium-java-client-driver', version:'1.0.2'
+}
