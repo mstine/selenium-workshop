@@ -5,6 +5,19 @@ repositories {
 }
 
 dependencies {
-	testCompile group:'junit', name:'junit', version:'4.8.2'
-	testCompile group:'org.seleniumhq.selenium.client-drivers', name:'selenium-java-client-driver', version:'1.0.2'
+	testCompile 'junit:junit:4.8.2'
+	testCompile 'org.seleniumhq.selenium:selenium:2.0a7'
+	testCompile 'org.testng:testng:5.14.1'
+}
+
+task seGridParallel(type: Test) {
+	useTestNG() {
+		suites 'src/test/resources/parallel-suite.xml'
+	}
+}
+
+task seGridSerial(type: Test) {
+	useTestNG() {
+		suites 'src/test/resources/serial-suite.xml'
+	}
 }

@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="Parallel Suite for Se Grid" parallel="classes">
+  <test name="Parallel Test for Se Grid">
+    <packages>
+      <package name="com.deepsouthsoftware.seworkshop.testng" />
+    </packages>
+  </test>
+</suite>

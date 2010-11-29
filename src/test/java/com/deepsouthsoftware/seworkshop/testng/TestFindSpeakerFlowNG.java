@@ -1,16 +1,13 @@
-		
-		package com.deepsouthsoftware.seworkshop;
+
+		package com.deepsouthsoftware.seworkshop.testng;
 
 		import com.thoughtworks.selenium.*;
-		import org.junit.After;
-		import org.junit.Before;
-		import org.junit.Test;
-		import java.util.regex.Pattern;
+		import org.testng.annotations.*;
 
-		public class TestFindSpeakerFlow extends SeleneseTestBase {			
-			@Before
+		public class TestFindSpeakerFlowNG extends SeleneseTestBase {			
+			@BeforeClass
 			public void setUp() throws Exception {
-				selenium = new DefaultSelenium("localhost", 4444, "*chrome",
+				selenium = new DefaultSelenium("localhost", 4444, "*firefox",
 				 															 "http://localhost:8080/");
 				selenium.start();
 			}
@@ -23,6 +20,8 @@
 				selenium.click("link=Alex Miller");
 				selenium.waitForPageToLoad("30000");
 				selenium.click("link=Find this Speaker");
+				
+				
 				selenium.waitForPageToLoad("30000");
 				selenium.click("link=RENT NOW");
 				selenium.waitForPageToLoad("30000");
@@ -31,7 +30,7 @@
 				verifyTrue(selenium.isTextPresent("This concludes your fake rental experience!"));
 			}
 
-			@After
+			@AfterClass
 			public void tearDown() throws Exception {
 				selenium.stop();
 			}
