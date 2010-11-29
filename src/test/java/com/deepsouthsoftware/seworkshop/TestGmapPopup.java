@@ -27,33 +27,33 @@ public class TestGmapPopup {
 					.sendKeys("Ft. Lauderdale");
 		driver.findElement(By.id("searchButton")).click();
 		
-		WebElement walgreensInsideLink = null;
-		
-		for (int second = 0;; second++) {
-			if (second >= 60) 
-				fail("timeout");
-			try { 
-				 walgreensInsideLink = driver.findElement(By.linkText("Walgreens (Inside)"));
-				 break; 
-			} catch (Exception e) {}
-			Thread.sleep(1000);
-		}
-		
+		WebElement walgreensInsideLink = waitForDynamicElement(By.linkText("Walgreens (Inside)"));
 		walgreensInsideLink.click();
 	
-		WebElement gMapInfoWindow = null;
+		WebElement gMapInfoWindow = waitForDynamicElement(By.cssSelector("div.gmnoprint > div.gmnoprint > div > div"));
+		assertThat(gMapInfoWindow.getText(), containsString("3895 W Broward Blvd"));
+		
+		WebElement winnDixieOutsideLink = waitForDynamicElement(By.linkText("Winn Dixie (Outside)"));
+		winnDixieOutsideLink.click();
+		
+		gMapInfoWindow = waitForDynamicElement(By.cssSelector("div.gmnoprint > div.gmnoprint > div > div"));
+		assertThat(gMapInfoWindow.getText(), containsString("1531 N State Road 7"));
+	}
+	
+	private WebElement waitForDynamicElement(By locator) throws Exception {
+		WebElement dynamicElement = null;
 		
 		for (int second = 0;; second++) {
 			if (second >= 60) 
 				fail("timeout");
 			try { 
-				 gMapInfoWindow = driver.findElement(By.cssSelector("div.gmnoprint > div.gmnoprint > div > div"));
+				 dynamicElement = driver.findElement(locator);
 				 break; 
 			} catch (Exception e) {}
 			Thread.sleep(1000);
 		}
 		
-		assertThat(gMapInfoWindow.getText(), containsString("3895 W Broward Blvd"));
+		return dynamicElement;
 	}
 
 	@After
