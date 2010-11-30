@@ -22,7 +22,7 @@ public class SpeakerRentalPage extends Page {
 
     @Override
     public boolean at() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return "Click Continue to sign-in or create an account.".equals(selenium.getText("css=h1.bigLink"));
     }
 
     public LoginPage continueToSignOn() {

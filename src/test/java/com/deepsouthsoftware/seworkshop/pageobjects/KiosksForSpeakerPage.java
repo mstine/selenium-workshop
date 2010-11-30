@@ -17,7 +17,8 @@ public class KiosksForSpeakerPage extends Page {
 
     @Override
     public boolean at() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return "Find a Fluffbox".equals(selenium.getText("//h2")) &&
+               "Selected speaker:".equals(selenium.getText("//h3"));
     }
 
     public KiosksForSpeakerPage(Selenium selenium) {

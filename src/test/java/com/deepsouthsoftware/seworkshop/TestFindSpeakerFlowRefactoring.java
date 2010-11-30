@@ -27,9 +27,13 @@ public class TestFindSpeakerFlowRefactoring extends SeleneseTestBase {
         assertTrue(speakerDetailsPage.at());
 
         KiosksForSpeakerPage kiosksForSpeakerPage = speakerDetailsPage.findThisSpeaker();
+        assertTrue(kiosksForSpeakerPage.at());
 
         SpeakerRentalPage speakerRentalPage = kiosksForSpeakerPage.rentNow();
+        assertTrue(speakerRentalPage.at());
+
         LoginPage loginPage = speakerRentalPage.continueToSignOn();
+        assertTrue(loginPage.at());
 
         loginPage.username("joeuser");
         loginPage.password("password");

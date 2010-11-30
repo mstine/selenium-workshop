@@ -22,7 +22,7 @@ public class LoginPage extends Page {
 
     @Override
     public boolean at() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return selenium.isTextPresent("Member sign in");
     }
 
     public void username(String username) {
